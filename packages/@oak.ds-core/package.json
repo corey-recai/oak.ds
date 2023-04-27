@@ -1,5 +1,5 @@
 {
-  "name": "@acme/core",
+  "name": "@oak.ds/core",
   "version": "0.0.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -16,14 +16,14 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
-    "@acme/tsconfig": "workspace:*",
-    "@types/react": "^18.0.9",
-    "@types/react-dom": "^18.0.4",
+    "@oak.ds/tsconfig": "workspace:*",
+    "@oak.ds/eslint-config": "workspace:*",
     "eslint": "^8.15.0",
-    "eslint-config-acme": "workspace:*",
     "react": "^18.1.0",
     "tsup": "^5.10.1",
-    "typescript": "^4.5.3"
+    "typescript": "^4.5.3",
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.4"
   },
   "publishConfig": {
     "access": "public"
