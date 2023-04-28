@@ -1,5 +1,5 @@
 {
-  "extends": "@oak.ds/tsconfig/solid-library.json",
+  "extends": "@oak.ds/tsconfig/solid-app.json",
   "include": ["."],
   "exclude": ["dist", "build", "node_modules"]
 }

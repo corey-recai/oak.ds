@@ -1,31 +1,27 @@
 {
   "name": "@oak.ds/core",
   "version": "0.0.0",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "sideEffects": false,
+  "type": "module",
+  "main": "lib/index.js",
   "license": "MIT",
   "files": [
-    "dist/**"
+    "lib"
   ],
   "scripts": {
-    "build": "tsup src/index.tsx --format esm,cjs --dts --external react",
-    "dev": "tsup src/index.tsx --format esm,cjs --watch --dts --external react",
+    "build": "rollup -c rollup.config.js",
+    "dev": "pnpm build --watch",
     "lint": "eslint \"src/**/*.ts*\"",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
-    "@oak.ds/tsconfig": "workspace:*",
     "@oak.ds/eslint-config": "workspace:*",
-    "eslint": "^8.15.0",
-    "react": "^18.1.0",
-    "tsup": "^5.10.1",
-    "typescript": "^4.5.3",
-    "@types/react": "^18.0.9",
-    "@types/react-dom": "^18.0.4"
-  },
-  "publishConfig": {
-    "access": "public"
+    "@oak.ds/tsconfig": "workspace:*",
+    "@rollup/plugin-typescript": "^11.1.0",
+    "postcss": "^8.4.23",
+    "rollup": "^3.21.0",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-preset-solid": "^2.0.1",
+    "solid-js": "^1.6.10",
+    "typescript": "^4.9.5"
   }
 }

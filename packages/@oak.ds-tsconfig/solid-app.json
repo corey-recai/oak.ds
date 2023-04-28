@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Solid Web App",
+  "extends": "./solid-library.json",
+  "compilerOptions": {
+    "types": ["vite/client"]
+  }
+}

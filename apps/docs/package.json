@@ -13,6 +13,7 @@
   "devDependencies": {
     "@oak.ds/eslint-config": "workspace:0.0.0",
     "@oak.ds/tsconfig": "workspace:0.0.0",
+    "@oak.ds/core": "workspace:0.0.0",
     "@storybook/addon-essentials": "^7.0.7",
     "@storybook/addon-interactions": "^7.0.7",
     "@storybook/addon-links": "^7.0.7",
