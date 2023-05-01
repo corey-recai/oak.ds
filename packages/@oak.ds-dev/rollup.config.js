@@ -35,7 +35,7 @@ function writeFileSyncRecursive(filename, content, charset = "utf8") {
     root = "/";
     filepath = filepath.slice(1);
   } else if (filepath[1] === ":") {
-    root = filepath.slice(0, 3); // c:\
+    root = filepath.slice(0, 3);
     filepath = filepath.slice(3);
   }
 
