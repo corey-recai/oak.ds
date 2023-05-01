@@ -1,5 +1,5 @@
 import { Component } from "solid-js";
-import { Button } from "../Button";
+import Button from "../Button";
 import "./header.css";
 
 type User = {
@@ -13,7 +13,7 @@ export interface HeaderProps {
   onCreateAccount: () => void;
 }
 
-export const Header: Component<HeaderProps> = props => (
+const Header: Component<HeaderProps> = props => (
   <header>
     <div class='wrapper'>
       <div>
@@ -62,3 +62,5 @@ export const Header: Component<HeaderProps> = props => (
     </div>
   </header>
 );
+
+export default Header;
