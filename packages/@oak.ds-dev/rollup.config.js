@@ -52,13 +52,8 @@ function writeFileSyncRecursive(filename, content, charset = "utf8") {
 }
 
 function createPackageJSON(resource, content) {
-  writeFileSyncRecursive(`${resource}/package.json`, content);
+  writeFileSyncRecursive(resolve(resource, "package.json"), content);
   console.log(`created ${resource}/package.json`);
-}
-
-function getInputFiles(format) {
-  if (format !== "umd") return [...files, resolve(`src/index.ts`)];
-  return resolve(`src/index.ts`);
 }
 
 const currentDir = cwd();
@@ -69,7 +64,7 @@ const inputs = readdirSync("src", { withFileTypes: true })
   .filter(item => item.isDirectory())
   .map(item => item.name);
 
-const files = inputs.map(item => resolve(`src/${item}/index.ts`));
+const files = inputs.map(item => resolve("src", item, "index.ts"));
 
 const extensions = [".js", ".ts", ".jsx", ".tsx"];
 
@@ -109,24 +104,25 @@ const basePlugins = [
 const outputs = {
   esm: {
     name: "",
-    dir: resolve(`../@oak.ds-core`),
+    dir: resolve("../@oak.ds-core"),
     type: "module",
   },
   umd: {
     name: "oakDS",
-    dir: resolve(`../@oak.ds-core/umd`),
+    dir: resolve("../@oak.ds-core/umd"),
     type: "module",
+    input: resolve("src/index.ts"),
   },
   cjs: {
     name: "",
-    dir: resolve(`../@oak.ds-core/node`),
+    dir: resolve("../@oak.ds-core/node"),
     type: "commonjs",
   },
 };
 
 const options = Object.entries(outputs).map(
-  ([format, { name, dir, type }]) => ({
-    input: getInputFiles(format),
+  ([format, { name, dir, type, input }]) => ({
+    input: input || [...files, resolve("src/index.ts")],
     external: ["solid-js", "solid-js/web", "solid-js/store", ...external],
     output: {
       dir,
@@ -152,7 +148,7 @@ const options = Object.entries(outputs).map(
           inputs.forEach(component => {
             if (format !== "umd")
               createPackageJSON(
-                resolve(`${dir}/${component}`),
+                resolve(dir, component),
                 JSON.stringify(content, null, 2)
               );
           });
@@ -179,7 +175,7 @@ const options = Object.entries(outputs).map(
 export default function () {
   console.log(`removing files in ${resolve("../@oak.ds-core")}...`);
 
-  readdirSync(resolve(`../@oak.ds-core`), { withFileTypes: true }).forEach(
+  readdirSync(resolve("../@oak.ds-core"), { withFileTypes: true }).forEach(
     item => {
       rmSync(resolve("../@oak.ds-core", item.name), {
         force: true,
