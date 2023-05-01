@@ -1,0 +1,9 @@
+{
+  "name": "@oak.ds/core",
+  "version": "0.0.0",
+  "type": "commonjs",
+  "sideEffects": false,
+  "module": "index.js",
+  "main": "index.js",
+  "types": "index.d.ts"
+}
